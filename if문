@@ -1,0 +1,150 @@
+package ifmun;
+
+import java.util.Scanner;
+
+public class Ifmun {
+
+	public static void main(String[] args) {
+		Alarm();
+	}
+
+	public static void compare() {
+		// 두 수 비교하기
+		System.out.println("두 수를 입력해 주세요..");
+		Scanner compare = new Scanner(System.in);
+		int a = compare.nextInt();
+		int b = compare.nextInt();
+		if(a>b) {
+			System.out.println(a + "가 " + b + "보다 더 커요!");
+		}else if(a<b) {
+			System.out.println(b + "가 " + a + "보다 더 커요!");
+		}else if(a==b) {
+			System.out.println(a + "가" + b + "와 같아요 !");
+		}
+	}
+	public static void testResults() {
+		//시험 점수를 입력받아 90 ~ 100점은 A
+		//80 ~ 89점은 B, 70 ~ 79점은 C 
+		//60 ~ 69점은 D
+		//나머지 점수는 F를 출력하는
+		//프로그램을 작성
+		int score ;
+		while(true) {
+			System.out.println("시험 점수를 입력 해 주세요..");
+			Scanner inPut = new Scanner(System.in);
+			score = inPut.nextInt();
+
+			if(score <= 0 || score >= 100){
+				System.out.println("시험 점수는 0~100 사이의 점수만 입력 할 수 있습니다.");
+				continue;
+			}else {
+
+				break;
+			}
+		}
+		//
+		//		switch(score/10) {
+		//		case 9 : System.out.println("A");
+		//		break;
+		//		case 8 : System.out.println("B");
+		//		break;
+		//		case 7 : System.out.println("C");
+		//		break;
+		//		case 6 : System.out.println("D");
+		//		break;
+		//		default : System.out.println("F");
+		//		}
+
+		char charPlus = 'A';
+
+		for(int i = 9 ; ; i--) {
+			if(i != (score/10)) {
+				charPlus++;			
+			}else {
+				break;
+			}
+		}
+			
+		System.out.println(charPlus);
+	}
+
+
+	public static void leapYear() {
+		//윤년
+		//연도가 주어졌을 때, 윤년이면 1, 아니면 0을 출력하는 프로그램을 작성하시오.
+		//연도가 4의 배수이면서, 100의 배수가 아닐 때 또는 400의 배수일 때이다.
+		// 1. 윤년은 4년에 한번 발생 (year % 4 == 0)
+		// 2. 1의 조건을 만족 하는 것 중, 100년 마다 평년 (year % 100 == 0)
+		// 3. 2의 조건을 만족 하는 것 중, 400년 마다 윤년 (year % 400 == 0)
+
+		Scanner checkYear = new Scanner(System.in);
+		int year = checkYear.nextInt();
+		if((year%4 == 0 && year%100 != 0)||(year%400 == 0)) {
+			System.out.println(year + "은 윤년입니다.");
+		}else {
+			System.out.println(year + "은 윤년이 아닙니다.");
+		}
+	}
+
+	public static void ChooseAQuadrant() {
+		// 사분면 고르기
+		// 주어진 점이 어느 사분면에 속하는지 알아내는 것
+		// 반시계 방향으로 4번 순서대로 1~4번
+		// x좌표, y좌표가 모두 양수 : 제1사분면
+
+		System.out.println("X좌표와 Y좌표를 순서대로 입력 해 주세요.");
+
+		Scanner inPutLocation = new Scanner(System.in);
+		int locationX = inPutLocation.nextInt();
+		int locationY = inPutLocation.nextInt();
+
+		if(locationX > 0 && locationY > 0 ) {
+			//++
+			System.out.println("제 1사분면 입니다.");
+			
+		}else if(locationX > 0 && locationY < 0){
+			//+-
+			System.out.println("제 2사분면 입니다.");
+			
+		}else if(locationX < 0 && locationY < 0){
+			//--
+			System.out.println("제 3사분면 입니다.");
+		}else if(locationX < 0 && locationY > 0){
+			//-+
+			System.out.println("제 4사분면 입니다.");
+		}else {
+			System.out.println("입력하신 좌표는 사분면의 경계에 있는 점 입니다.");
+		}
+	}
+
+	public static void Alarm() {
+		//알람 시계 45분 일찍 맞춰 놓기
+		
+		// 알람을 몇시에 맞추실 건가요?
+		while(true) {
+		System.out.println("알람을 몇시에 맞추실 건가요? 시간과 분을 차례로 입력 해 주세요.");
+		Scanner time = new Scanner(System.in);
+		int hour = time.nextInt();
+		int minute = time.nextInt();
+		
+		if(hour < 1 || hour > 25) {
+			System.out.println("시간은 24시 단위로 입력 해 주세요..");
+			continue;
+		}else if(minute < 0 || minute > 61){
+			System.out.println("분은 0~60사이로 입력 해 주세요..");
+			continue;
+		}else if(minute-45 < 0) {
+			hour--;
+			minute = - (minute-45);
+			System.out.println("실제 알람이 울리는 시간은 " + hour + "시 " + (60-minute) + "분 입니다.");
+			break;
+		}
+		
+		}
+		
+		//절대값 구하는 메소드
+		//Math.abs(절대값 구하고 싶은 값)
+		
+	}
+
+}
